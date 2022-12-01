@@ -5,10 +5,6 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
-let touchStart = false;
-document.body.ontouchstart = () => (touchStart = true);
-document.body.ontouchend = () => (touchStart = false);
-
 function createGrid(n) {
     // const containerSide = container.clientWidth;
     container.setAttribute('style', `grid-template-rows: repeat(${n}, ${100/n}%);`+
@@ -22,10 +18,8 @@ function createGrid(n) {
             if ((i+j)%2 == 1)
                 temp.setAttribute('style', 'background-color: lightgrey');
             // temp.setAttribute('style', `width: ${divSide}px; height: ${divSide}px;`);
-            if (isMobileDevice()) {
+            if (isMobileDevice())
                 temp.addEventListener('touchstart', changeColor);
-                temp.addEventListener('touchmove', changeColor);
-            }
             else {
                 temp.addEventListener('mouseover', changeColor);
                 temp.addEventListener('mousedown', changeColor);
@@ -37,7 +31,6 @@ function createGrid(n) {
 
 function changeColor(e) {
     if (isMobileDevice()) {
-        if (e.type === 'touchmove' && !touchStart) return;
         e.target.style.backgroundColor = DEFAULT_COLOR;
     }
     else {
