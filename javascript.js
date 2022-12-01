@@ -1,6 +1,10 @@
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = 'black';
 
+const container = document.querySelector('#container');
+const sizeSelect = document.querySelector('#sizeSelect');
+const value64 = document.querySelector('#value64');
+
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
@@ -14,7 +18,7 @@ function createGrid(n) {
         for(let j=1; j<=n; j++) {
             const temp = document.createElement('div');
             temp.id = `${i}-${j}`;
-            temp.classList.add('grid-item');
+            temp.classList.add('grid-item', 'non-selectable');
             if ((i+j)%2 == 1)
                 temp.setAttribute('style', 'background-color: lightgrey');
             // temp.setAttribute('style', `width: ${divSide}px; height: ${divSide}px;`);
@@ -47,5 +51,23 @@ function isMobileDevice() {
         return false;
 }
 
-const container = document.querySelector('#container');
-createGrid(DEFAULT_SIZE);
+function empty(element) {
+    while(element.firstElementChild) {
+        element.firstElementChild.remove();
+    }
+}
+
+sizeSelect.addEventListener('change', () => {
+    empty(container);
+    if (sizeSelect.value == "8")
+        createGrid(8);
+    else if (sizeSelect.value == "16")
+        createGrid(16);
+    else if (sizeSelect.value == "32")
+        createGrid(32);
+    else if (sizeSelect.value == "64")
+        createGrid(64);
+});
+
+createGrid(sizeSelect.value);
+if (isMobileDevice()) sizeSelect.removeChild(value64);

@@ -1,7 +1,8 @@
 body {
-    /* align-items: center; */
     background-color: aquamarine;
     padding-top: 1.5vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
@@ -27,4 +28,22 @@ body {
     background-color: white;
     /* aspect-ratio: 1/1;
     align-self: stretch; */
+}
+
+.non-selectable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.select {
+    width: 10vh;
+    margin-top: 20px;
+    padding: 5px;
+    font-size: large;
+    text-align: center;
+    align-self: center;
+    box-shadow: rgb(0 0 0 / 24%) 3px 3px 8px;
 }
