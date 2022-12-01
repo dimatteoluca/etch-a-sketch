@@ -1,0 +1,27 @@
+body {
+    /* align-items: center; */
+    background-color: aquamarine;
+    padding-top: 3vh;
+}
+
+.title {
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 5vh;
+}
+
+.grid-container {
+    aspect-ratio: 1/1;
+    min-width: 80vmin;
+    max-width: 30vmax;
+    margin: auto;
+    border-style: solid;
+    display: grid;
+    background-color: burlywood;
+}
+
+.grid-item {
+    background-color: white;
+    /* aspect-ratio: 1/1;
+    align-self: stretch; */
+}
