@@ -16,4 +16,5 @@ function createGrid(n) {
 }
 
 const container = document.querySelector('#container');
-createGrid(16);
+const n = 16;
+createGrid(n);
