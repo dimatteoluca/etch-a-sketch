@@ -33,6 +33,10 @@ body {
     box-shadow: rgb(0 0 0 / 24%) 3px 3px 8px;
 }
 
+.mobile-container {
+    min-width: 80vmin !important;
+}
+
 .grid-item {
     background-color: white;
     /* aspect-ratio: 1/1;
@@ -73,5 +77,5 @@ body {
 }
 
 #modeSelect {
-    width: 22vh;
+    width: 16vh;
 }

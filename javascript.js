@@ -38,6 +38,16 @@ function goShading(backgroundColor) {
     return `rgb(${Number(r)-25}, ${Number(g)-25}, ${Number(b)-25})`;
 }
 
+function goEraser(targetID) {
+    const coordinates = targetID.split('-');
+    const row = Number(coordinates[0]);
+    const col = Number(coordinates[1]);
+    if ((row+col)%2 == 0)
+        return "white";
+    else
+        return "lightgrey";
+}
+
 function changeColor(e) {
     if (!isMobileDevice())
         if (e.type === 'mouseover' && !mouseDown) return;
@@ -46,9 +56,10 @@ function changeColor(e) {
         color = DEFAULT_COLOR;
     else if (modeSelect.value == "rainbow")
         color = goRainbow();
-    else if (modeSelect.value == "shading") {
+    else if (modeSelect.value == "shading")
         color = goShading(window.getComputedStyle(e.target).getPropertyValue('background-color'));
-    }
+    else if (modeSelect.value == "eraser")
+        color = goEraser(e.target.id);
     e.target.style.backgroundColor = color;
 }
 
@@ -103,7 +114,9 @@ clearButton.addEventListener('click', () => {
 if (isMobileDevice()) {
     sizeSelect.removeChild(value32);
     sizeSelect.removeChild(value64);
+    container.classList.add('mobile-container');
     options.style['flex-direction'] = "column";
+    options.style['margin-top'] = "3vh";
     for (let i = 0; i < select.length; i++) {
         select[i].style.width = "24vh";
     }
