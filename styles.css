@@ -38,12 +38,31 @@ body {
     user-select: none;
 }
 
+.options {
+    align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
 .select {
-    width: 10vh;
+    width: 11vh;
+    margin: 0 0.5vh;
     margin-top: 20px;
     padding: 5px;
-    font-size: large;
+    border-radius: 20px;
+    border-style: none;
+    font-size: larger;
     text-align: center;
-    align-self: center;
-    box-shadow: rgb(0 0 0 / 24%) 3px 3px 8px;
+    box-shadow: rgb(0 0 0 / 24%) 5px 5px 8px;
+}
+
+#sizeSelect {
+    width: 11vh;
+}
+
+#modeSelect {
+    width: 22vh;
 }

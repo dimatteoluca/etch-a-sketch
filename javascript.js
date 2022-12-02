@@ -1,9 +1,13 @@
-const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = 'black';
+
+let color = DEFAULT_COLOR;
 
 const container = document.querySelector('#container');
 const sizeSelect = document.querySelector('#sizeSelect');
 const value64 = document.querySelector('#value64');
+const modeSelect = document.querySelector('#modeSelect');
+const clearButton = document.querySelector('#clearButton');
+const options = document.querySelector('#options');
 
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
@@ -34,12 +38,20 @@ function createGrid(n) {
 }
 
 function changeColor(e) {
+    if (modeSelect.value == "color")
+        color = DEFAULT_COLOR;
+    else if (modeSelect.value == "rainbow") {
+        const randomR = Math.floor(Math.random() * 256);
+        const randomG = Math.floor(Math.random() * 256);
+        const randomB = Math.floor(Math.random() * 256);
+        color = `rgb(${randomR}, ${randomG}, ${randomB})`;
+    }
     if (isMobileDevice()) {
-        e.target.style.backgroundColor = DEFAULT_COLOR;
+        e.target.style.backgroundColor = color;
     }
     else {
         if (e.type === 'mouseover' && !mouseDown) return;
-        e.target.style.backgroundColor = DEFAULT_COLOR;
+        e.target.style.backgroundColor = color;
     }
 
 }
@@ -69,5 +81,13 @@ sizeSelect.addEventListener('change', () => {
         createGrid(64);
 });
 
+clearButton.addEventListener('click', () => {
+    empty(container);
+    createGrid(sizeSelect.value);
+});
+
+if (isMobileDevice()) {
+    sizeSelect.removeChild(value64);
+    options.style['flex-direction'] = "column";
+}
 createGrid(sizeSelect.value);
-if (isMobileDevice()) sizeSelect.removeChild(value64);
