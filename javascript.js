@@ -5,9 +5,11 @@ let color = DEFAULT_COLOR;
 const container = document.querySelector('#container');
 const sizeSelect = document.querySelector('#sizeSelect');
 const value64 = document.querySelector('#value64');
+const value32 = document.querySelector('#value32');
 const modeSelect = document.querySelector('#modeSelect');
 const clearButton = document.querySelector('#clearButton');
 const options = document.querySelector('#options');
+const select = document.getElementsByClassName('select');
 
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
@@ -99,7 +101,11 @@ clearButton.addEventListener('click', () => {
 
 
 if (isMobileDevice()) {
+    sizeSelect.removeChild(value32);
     sizeSelect.removeChild(value64);
     options.style['flex-direction'] = "column";
+    for (let i = 0; i < select.length; i++) {
+        select[i].style.width = "24vh";
+    }
 }
 createGrid(sizeSelect.value);

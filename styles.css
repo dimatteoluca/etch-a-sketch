@@ -1,5 +1,6 @@
 body {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    background-color: rgb(35 35 35);
     /* padding-top: 1.5vh; */
     padding-top: 3.5vh;
     display: flex;
@@ -21,11 +22,12 @@ body {
 
 .grid-container {
     aspect-ratio: 1/1;
-    min-width: 75vmin;
+    min-width: 70vmin;
     max-width: 25vmax;
     margin: auto;
     border-style: solid;
     border-width: 4px;
+    border-color: white;
     display: grid;
     background-color: burlywood;
     box-shadow: rgb(0 0 0 / 24%) 3px 3px 8px;
