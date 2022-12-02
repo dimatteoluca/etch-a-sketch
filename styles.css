@@ -1,6 +1,7 @@
 body {
     background-color: aquamarine;
-    padding-top: 1.5vh;
+    /* padding-top: 1.5vh; */
+    padding-top: 3.5vh;
     display: flex;
     flex-direction: column;
 }
@@ -10,6 +11,12 @@ body {
     font-family: sans-serif;
     margin-bottom: 4vh;
     text-shadow: rgb(0 0 0 / 12%) 1px 3px 3px;
+}
+
+.logo {
+    width: 40vh;
+    align-self: center;
+    margin-bottom: 4vh;
 }
 
 .grid-container {
