@@ -4,8 +4,6 @@ let color = DEFAULT_COLOR;
 
 const container = document.querySelector('#container');
 const sizeSelect = document.querySelector('#sizeSelect');
-const value64 = document.querySelector('#value64');
-const value32 = document.querySelector('#value32');
 const modeSelect = document.querySelector('#modeSelect');
 const clearButton = document.querySelector('#clearButton');
 const options = document.querySelector('#options');
@@ -43,22 +41,22 @@ function goEraser(targetID) {
     const row = Number(coordinates[0]);
     const col = Number(coordinates[1]);
     if ((row+col)%2 == 0)
-        return "white";
+        return 'white';
     else
-        return "lightgrey";
+        return 'lightgrey';
 }
 
 function changeColor(e) {
     if (!isMobileDevice())
         if (e.type === 'mouseover' && !mouseDown) return;
 
-    if (modeSelect.value == "color")
+    if (modeSelect.value == 'color')
         color = DEFAULT_COLOR;
-    else if (modeSelect.value == "rainbow")
+    else if (modeSelect.value == 'rainbow')
         color = goRainbow();
-    else if (modeSelect.value == "shading")
+    else if (modeSelect.value == 'shading')
         color = goShading(window.getComputedStyle(e.target).getPropertyValue('background-color'));
-    else if (modeSelect.value == "eraser")
+    else if (modeSelect.value == 'eraser')
         color = goEraser(e.target.id);
     e.target.style.backgroundColor = color;
 }
@@ -95,13 +93,13 @@ function empty(element) {
 
 sizeSelect.addEventListener('change', () => {
     empty(container);
-    if (sizeSelect.value == "8")
+    if (sizeSelect.value == '8')
         createGrid(8);
-    else if (sizeSelect.value == "16")
+    else if (sizeSelect.value == '16')
         createGrid(16);
-    else if (sizeSelect.value == "32")
+    else if (sizeSelect.value == '32')
         createGrid(32);
-    else if (sizeSelect.value == "64")
+    else if (sizeSelect.value == '64')
         createGrid(64);
 });
 
@@ -112,13 +110,13 @@ clearButton.addEventListener('click', () => {
 
 
 if (isMobileDevice()) {
-    sizeSelect.removeChild(value32);
-    sizeSelect.removeChild(value64);
+    sizeSelect.removeChild(document.querySelector('#value32'));
+    sizeSelect.removeChild(document.querySelector('#value64'));
     container.classList.add('mobile-container');
     options.style['flex-direction'] = "column";
-    options.style['margin-top'] = "3vh";
+    options.style['margin-top'] = '3vh';
     for (let i = 0; i < select.length; i++) {
-        select[i].style.width = "24vh";
+        select[i].style.width = '24vh';
     }
 }
 createGrid(sizeSelect.value);
